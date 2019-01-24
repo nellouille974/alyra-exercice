@@ -1,0 +1,3 @@
+Refaites alors l’exercice 1.1 avec wireshark allumé, qu’observez vous?
+
+Au niveau des deux terminaux ouverts, pareil que dans l'exercice 1, mais avec wireshark, plus de détails sont obtenus en plus du protocole utilisé, on peux voir la source, la cible, les ports, la taille et l'heure. 

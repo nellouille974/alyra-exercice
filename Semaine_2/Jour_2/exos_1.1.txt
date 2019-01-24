@@ -1,0 +1,15 @@
+Quel protocole utilise nc?
+
+Il utilise le protocole HTTP , TCP (t).
+
+Que se passe-t-il dans le premier terminal?
+
+Affiche "bonjour" dans le premier terminal.
+
+On peux résumer en 3 phases :
+
+- l'établissement de la connexion ;
+- les transferts de données ;
+- la fin de la connexion.
+
+
