@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Outil bitcoin</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="page.css" /> 
+  </head>
+  <body>
+  	<div id="bandeau">
+  		<h1>Outil d'analyse bitcoin</h1>
+  	</div>
+  	<section id="convertisseur">
+  		<h2>Convertisseur</h2>
+  		<!--Hexadécimal en décimal-->
+  		<div class="carre">
+  			<div class="title">
+  				<p>Entrez un nombre héxadécimal</p>
+  			</div>
+  			<div class="nbr">
+  				<input type="text" id="hexa" value="0">
+  				<button id="conv1">Convertir en décimal</button>
+  			</div>
+  			<div class="rsl">
+  				<span type="text" id="deci"></span>
+  		    </div>
+  		</div>
+  		<!--Décimal en héxadécimal-->
+  		<div class="carre">
+  			<div class="title">
+  				<p>Entrez un nombre décimal</p>
+  			</div>
+  			<div class="nbr">
+  				<input type="number" id="decimal" value="1">
+  				<button id="conv2">Convertir en héxadécimal</button>
+  			</div>
+  			<div class="rsl">
+  				<span type="text" id="hexad"></span>
+  		    </div>
+  		</div>
+  		<!--Little indian fait grace à l'exemple-->
+  		<div class="carre">
+  			<div class="title">
+  				<p>Entrez un nombre décimal little indian</p>
+  			</div>
+  			<div class="nbr">
+  				<input type="text" id="indian" value="0">
+  				<button id="conv3">Convertir en héxadécimal</button>
+  			</div>
+  			<div class="rsl">
+  				<span type="text" id="a"></span>
+  		    </div>
+  		</div>
+  		<!--varInt fonction non fini-->
+  		<div class="carre">
+  			<div class="title">
+  				<p>Entrez un "varInt"</p>
+  			</div>
+  			<div class="nbr">
+  				<input type="text" id="varint" value="0xfd2602">
+  				<button id="conv4">Convertir en décimal</button>
+  			</div>
+  			<div class="rsl">
+  				<span type="text" id="decima"></span>
+  		    </div>
+  		</div>
+  		<!-- Champs bits non effectué à revoir -->
+  		<div class="carre">
+  			<div class="title">
+  				<p>Entrez un champ bits</p>
+  			</div>
+  			<div class="nbr">
+  				<input type="text" name="">
+  				<button>Voir la cible correspondante</button>
+  			</div>
+  			<div class="rsl">
+  				<span type="text"></span>
+  		    </div>
+  		</div>
+  	  	<!-- cible en difficulté -->
+  		<div class="carre">
+  			<div class="title">
+  				<p>Entrez un nombre cible</p>
+  			</div>
+  			<div class="nbr">
+  				<input type="text" id="cible" value="0">
+  				<button id="conv6">Convertir en difficulté</button>
+  			</div>
+  			<div class="rsl">
+  				<span type="text" id="difficult"></span>
+  		    </div>
+  		</div>
+  		<!--OP code non effectué à revoir-->
+  		<div class="carre">
+  			<div class="title">
+  				<p>Entrez un script héxadécimal</p>
+  			</div>
+  			<div class="nbr">
+  				<input type="text" name="">
+  				<button>Voir OP codes correspondants</button>
+  			</div>
+  			<div class="rsl">
+  				<span type="text"></span>
+  		    </div>
+  		</div>
+  	</section>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
