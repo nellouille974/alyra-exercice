@@ -35,7 +35,7 @@ contract CagnotteFestival is Cogere {
   mapping (address => uint) festivaliers;
   uint private depensesTotales;
   uint public montantMinSponsor;
-  address[] sponsors;
+  string[] sponsors;
 
   function acheterTicket() public payable {
     require(msg.value > 500 finney, "Place à 0.5 Ether");
@@ -50,11 +50,10 @@ contract CagnotteFestival is Cogere {
     destinataire.transfer(montant);
   }
 
-  function sponsoriser() public payable {
+  function sponsoriser(string memory nom) public payable {
     require(msg.value >= montantMinSponsor);
-    sponsors[sponsors.length]=msg.sender;
+    sponsors.push(nom);
   }
-
   
   function comptabiliserDepenses(uint montant) private {
     depensesTotales += montant;
