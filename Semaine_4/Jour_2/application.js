@@ -24,6 +24,90 @@ async function createMetaMaskDapp() {
 	   console.log("Current gas price: " + gasPriceString);
 	   document.getElementById('gas').innerHTML = gasPriceString;
 	});
+   // contrat
+   let abi =
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "dev",
+				"type": "bytes32"
+			}
+		],
+		"name": "remettre",
+		"outputs": [
+			{
+				"name": "ordre",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "cred",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "url",
+				"type": "string"
+			}
+		],
+		"name": "produireHash",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "destinataire",
+				"type": "address"
+			},
+			{
+				"name": "valeur",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+];
+
+	let contratCredibilite = new ethers.Contract("0x0680cb5a341c804604ffc01a469e7d8baa0a1a4c", abi, dapp.provider);
+	let maCredibilite = await contratCredibilite.cred(dapp.address);
+	console.log(maCredibilite.toString(), "maCredibilite"); // le résultat est 0 j'imagine que c'est parce que je ne gère pas dans mon contract le fait d'obtenir
+	//de la crédibilité en rendant son devoir ?
 
  } catch(err) {
    // Gestion des erreurs
