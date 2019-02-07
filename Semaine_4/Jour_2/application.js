@@ -101,13 +101,30 @@ async function createMetaMaskDapp() {
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "hashUrl",
+				"type": "bytes32"
+			}
+		],
+		"name": "Remise",
+		"type": "event"
 	}
 ];
 
-	let contratCredibilite = new ethers.Contract("0x0680cb5a341c804604ffc01a469e7d8baa0a1a4c", abi, dapp.provider);
+	let contratCredibilite = new ethers.Contract("0x2074c1c6e94739e23aa1b750fa7990ef0959deeb", abi, dapp.provider);
 	let maCredibilite = await contratCredibilite.cred(dapp.address);
 	console.log(maCredibilite.toString(), "maCredibilite"); // le résultat est 0 j'imagine que c'est parce que je ne gère pas dans mon contract le fait d'obtenir
 	//de la crédibilité en rendant son devoir ?
+
+	//ecouter evenement
+	contratCredibilite.on('Remise', (dev , event) => {
+		console.log(dev,"cool j'écoute");
+	});
 
  } catch(err) {
    // Gestion des erreurs
