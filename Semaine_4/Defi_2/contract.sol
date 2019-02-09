@@ -15,7 +15,7 @@ contract Illustrator {
        string state;
        string description;
        uint256 minReputation;
-       address[] listOfCandidates; // comment eviter l erreur ?
+       address[] listOfCandidates;
    }
    
    //array of request
@@ -34,7 +34,8 @@ contract Illustrator {
        require(reputation[user] >= 1);
        uint commision = enumeration * 2 / 100;
        uint montant = enumeration + commision;
-       offers.push(Offer(user, nameOfUser, montant, timeLimit, state = "OPEN" ,description, minReputation, address[]));
+       address[] memory addresses;
+       offers.push(Offer(user, nameOfUser, montant, timeLimit, state = "OPEN" ,description, minReputation, addresses));
        //emit NewOffer(id,enumeration, timeLimit, state, description, minReputation);
    }
    
