@@ -423,17 +423,18 @@ const abi = [
 	}
 ];
 // Connection metaMask
-async function createMetaMaskDapp() {
- try {
-   // Demande à MetaMask l'autorisation de se connecter
-   const addresses = await ethereum.enable();
-   const address = addresses[0]
-   // Connection au noeud fourni par l'objet web3
-   const provider = new ethers.providers.Web3Provider(ethereum);
-   const dapp = { address, provider };
-   const marketPlaceIllustrator = new ethers.Contract("0x57cd457cb96824a840b0fb0415ab4e90bed8679b", abi, dapp.provider.getSigner());
-   console.log(dapp);
-   // List Offers
+// Demande à MetaMask l'autorisation de se connecter
+const addresses = await ethereum.enable();
+const address = addresses[0]
+// Connection au noeud fourni par l'objet web3
+const provider = new ethers.providers.Web3Provider(ethereum);
+dapp = { address, provider };
+const marketPlaceIllustrator = new ethers.Contract("0x57cd457cb96824a840b0fb0415ab4e90bed8679b", abi, dapp.provider.getSigner());
+console.log(dapp);
+
+
+// List Offers
+function listOffers() {
    let offers =  await marketPlaceIllustrator.offers();
    // create fragment
    const f = document.createDocumentFragment();
@@ -454,8 +455,4 @@ async function createMetaMaskDapp() {
    }
    document.body.appendChild(f);
    console.log(offers);
- } catch(err) {
-   // Gestion des erreurs
-   console.error(err);
- }
 }
