@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Premier site decentralisée</title>
+</head>
+<body>	
+	<h1 style="text-align: center">Exercice 5.3.2</h1>
+	<p>Implémenter une fonction Ping pour récupérer des informations sur un noeud IPFS</p>
+
+	<span id="list"></span>
+
+	<label>Entrez un pair :</label>
+	<input type="text" name="pair" id="pair">
+	<button id="ping" onclick="pingPair()">PING</button>
+	<span id="result"></span>
+
+	<a href="http://localhost:8080/ipfs/QmYwk38eCUxNHCTfrSTMW4JyeeaAKAai9awdSRGQxbEQVB/">Lien</a>
+	<script src="https://unpkg.com/ipfs/dist/index.min.js"></script>
+	<script type="text/javascript">
+		//Initialise un objet ipfs
+		const node = new Ipfs({ repo: 'ipfs-' + Math.random() });
+		// Function exemple du cours récupérer 10 premiers pairs
+		node.once('ready', () => {
+			node.swarm.addrs().then(addrs => {
+				let list = "<ul>";
+				for(let i = 0;i < addrs.length && i < 10; i++){
+					list += "<li>" + addrs[i].id._idB58String + "</li>";
+				}
+				list += "</ul>";
+				document.getElementById('list').innerHTML = list;
+			})
+		});
+
+		function pingPair() {
+			let pair = document.getElementById("pair").value;
+			node.ping(pair).then(res=>{
+				res.forEach((r) => {
+					if (r.time) {
+      					console.log(`Pong received: time=${r.time} ms`);
+      					document.getElementById('result').innerHTML = r.time;
+    				} else {
+      					console.log(r.text);
+      					document.getElementById('result').innerHTML = r.text;
+    				}			
+				})
+			});
+		}
+	</script>
+ </body>
+</html>
