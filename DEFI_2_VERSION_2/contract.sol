@@ -102,5 +102,10 @@ contract marketPlaceIllustrator {
         msg.sender.transfer(offers[index].enumeration - commision);
        
    }
+   
+   // List offers
+     function list() public view returns (Offer[] memory) {
+       return offers;
+   }
 
 }
