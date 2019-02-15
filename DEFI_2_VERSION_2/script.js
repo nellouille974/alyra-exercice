@@ -299,11 +299,31 @@ async function listOffers() {
    for(offer of offers) {
 	   	doc = document.createElement("div");
 	   	if(offer.state <= 1) {
-	   	doc.innerHTML = `<p>Titre :  ${offer.title} </p>
-	   					<p>Description : ${offer.description} </p>
-	   					<p>Réputation minimum requise : ${offer.minReputation} </p>
-	   					<p>Rénumération : ${offer.enumeration} </p>
-	   					<p>Délai : ${offer.timeLimit} </p>`;
+	   	doc.innerHTML = `
+	   	<table class="table table-dark">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Title</th>
+		      <th scope="col">Description</th>
+		      <th scope="col">Minimum reputation</th>
+		      <th scope="col">Remuneration</th>
+		      <th scope="col">Time limit</th>
+		      <th scope="col">Candidate</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="row">${offers.indexOf(offer)}</th>
+		      <td>${offer.title}</td>
+		      <td>${offer.description}</td>
+		      <td>${offer.minReputation}</td>
+		      <td>${offer.enumeration}</td>
+		      <td>${offer.timeLimit}</td>
+		      <td><button onclick="apply(${offers.indexOf(offer)})">Click</button></td>	      
+		    </tr>
+		  </tbody>
+		</table>`;
 	   	f.appendChild(doc);
 	   } else {
 	   	doc.innerHTML = "Désolée, il n'y a pas d'offres pour le moment.";
@@ -312,4 +332,38 @@ async function listOffers() {
    }
    document.body.appendChild(f);
    console.log(offers);
+}
+
+// Apply
+
+async function apply(index) {
+	console.log(index);
+	await marketPlaceIllustrator.applyToOffer(index);
+}
+
+// Registration for customers
+
+async function customer(name) {
+	name = document.getElementById('name').value;
+	await marketPlaceIllustrator.customerRegistration(name);
+}
+
+// Add offers
+
+async function add(title,description,reputation,renumeration,timeLimit) {
+	// Passe bien dans la function mais rien ne s'ajoute ...
+	title 			= 	document.getElementById("title").value;
+	description 	= 	document.getElementById("des").value;
+	reputation  	= 	document.getElementById("rep").value;
+	renumeration 	= 	document.getElementById("enum").value;
+	timeLimit 		= 	document.getElementById("t").value;
+
+	await marketPlaceIllustrator.addOffer(title,description,reputation,renumeration,timeLimit);
+}
+
+// Registration for illustrator
+
+async function illustrator(name) {
+	name = document.getElementById('n').value;
+	await marketPlaceIllustrator.illustratorRegistration(name);
 }

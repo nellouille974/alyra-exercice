@@ -32,15 +32,53 @@
 		    </form>
 		  </div>
 		</nav>
-<br/>
-<br/>
-		<h1>Market place for illustrators</h1>
+
 <br/>
 <br/>
 
-        <button type="button" onclick="listOffers()" class="btn btn-secondary btn-lg btn-block">List offers</button>
+		<h3>If you are not already registered thank you to register below</h3>
+<br/>
+		<form>
+		  <div class="row">
+		    <div class="col">
+		      <input type="text" class="form-control" id="name" placeholder="Name">
+		    </div>
+		    <div class="col">
+		      <button type="submit" onclick="customer()" class="btn btn-primary">Submit</button>
+		    </div>
+		  </div>
+		</form>
+
 <br/>
 <br/>
+		<h2>Post an offer</h2>
+<br/>
+		<form>
+		  <div class="form-group">
+		    <label for="title">Title</label>
+		    <input type="text" class="form-control" id="title" placeholder="Enter a title for your offer">
+		  </div>
+		  <div class="form-group">
+		    <label for="des">Description</label>
+		    <input type="text" class="form-control" id="des" placeholder="Enter a description">
+		  </div>
+		  <div class="form-row">
+		    <div class="form-group col-md-4">
+		      <label for="rep">Minimum reputation</label>
+		      <input type="number" class="form-control" id="rep" placeholder="1">
+		    </div>
+		    <div class="form-group col-md-4">
+		      <label for="enum">Remuneration</label>
+		      <input type="number" class="form-control" id="enum" placeholder="10">  
+		    </div>
+		    <div class="form-group col-md-4">
+		      <label for="t">Time limit</label>
+		      <input type="number" class="form-control" id="t" placeholder="2">
+		    </div>
+		  </div>
+		  <button type="submit" onclick="add()" class="btn btn-primary">Send</button>
+		</form>
+
  	<script src="https://cdn.ethers.io/scripts/ethers-v4.min.js"
 
     	charset="utf-8"
