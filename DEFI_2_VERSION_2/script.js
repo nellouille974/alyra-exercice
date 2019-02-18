@@ -286,7 +286,7 @@ const provider = new ethers.providers.Web3Provider(ethereum);
 const addresses =  ethereum.enable();
 const address = addresses[0]
 const dapp = { address, provider };
-const marketPlaceIllustrator = new ethers.Contract("0x26d8abb335a69eb84d5ece22db4a159201795b42", abi, dapp.provider.getSigner());
+const marketPlaceIllustrator = new ethers.Contract("0xa6d3f256e0527f475583a606d50472570ef8dde5", abi, dapp.provider.getSigner());
 console.log(dapp);
 
 

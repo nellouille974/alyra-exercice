@@ -99,7 +99,7 @@ contract marketPlaceIllustrator {
         offers[index].hashUrl = hashUrlWork(url);
         offers[index].state = stateOffer.CLOSE;
         uint commision = offers[index].enumeration * 2 / 100;
-        msg.sender.transfer(offers[index].enumeration - commision);
+        address(msg.sender).transfer(offers[index].enumeration - commision);
        
    }
    
