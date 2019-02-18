@@ -351,7 +351,6 @@ async function customer(name) {
 // Add offers
 
 async function add(title,description,reputation,renumeration,timeLimit) {
-	// Passe bien dans la function mais rien ne s'ajoute ...
 	title 			= 	document.getElementById("title").value;
 	description 	= 	document.getElementById("des").value;
 	reputation  	= 	document.getElementById("rep").value;
