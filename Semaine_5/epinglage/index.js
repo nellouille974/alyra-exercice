@@ -10,7 +10,7 @@ const abi = [
 		"inputs": [
 			{
 				"name": "idDoc",
-				"type": "uint256"
+				"type": "string"
 			}
 		],
 		"name": "payerStockage",
@@ -20,12 +20,31 @@ const abi = [
 		"type": "function"
 	},
 	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "listIdDoc",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"anonymous": false,
 		"inputs": [
 			{
 				"indexed": false,
 				"name": "id",
-				"type": "uint256"
+				"type": "string"
 			}
 		],
 		"name": "Epingler",
@@ -33,26 +52,37 @@ const abi = [
 	}
 ];
 
-const contract = new ethers.Contract("0x9e3f78611e1866e187e13c3bd21fc681e511ae2b", abi, provider.getSigner());
 
 node.on('ready', () => {
- console.log("IPFS prêt");
+	 console.log("IPFS prêt");
 
- provider.getNetwork().then(
-   r =>  console.log("Ethereum connecté sur ", r)
- )
+	 provider.getNetwork().then(
+	   r =>  console.log("Ethereum connecté sur ", r)
+	 )
+	const contract = new ethers.Contract("0x205a60ba232eb60f87928e7229dcebf0c8ab70fc", abi, provider.getSigner());
+	 //event
+	contract.on("Epingler", (idDoc, event) => {
+
+	    console.log(idDoc,"ecoute evenement");
+
+		node.add(new node.types.Buffer(idDoc), (err,filesAdded) => {
+			if (err) {
+				return console.error('Error',err,res);
+			}
+			filesAdded.forEach(file => {
+				console.log('Add success', file.hash);
+				let hash = file.hash;
+
+				node.pin.add(hash, function (err, result) {
+		    		if (err) {
+		    			console.log('Error pin', err);
+		    		}
+					console.log(result[0].hash +' was pinned');
+	    		})
+			});
+		})
+
+	});
 });
 
-//event
-contract.on("Epingler", (id, event) => {
 
-    console.log(id.toString(),"ecoute evenement");
-
-    node.pin.add(id, function (err, pinset) {
-    	if (err) {
-    		throw err;
-    	}
-
-    	console.log(pinset,"pinset");
-    })
-});
