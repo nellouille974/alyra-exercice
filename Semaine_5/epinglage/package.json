@@ -1,0 +1,15 @@
+{
+  "name": "epinglage",
+  "version": "1.0.0",
+  "description": "Service d’épinglage de fichiers décentralisés",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nelly",
+  "license": "ISC",
+  "dependencies": {
+    "ethers": "^4.0.25",
+    "ipfs": "^0.34.4"
+  }
+}
