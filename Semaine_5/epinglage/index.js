@@ -2,6 +2,8 @@ const ethers = require('ethers')
 const Ipfs= require('ipfs')
 const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 const node = new Ipfs();
+const express = require('express')
+const app = express()
 
 // ABI contract
 const abi = [
@@ -84,5 +86,7 @@ node.on('ready', () => {
 
 	});
 });
+
+
 
 
