@@ -6,15 +6,15 @@ contract epinglage {
     
     using SafeMath for uint256;
     
-    uint256[] listIdDoc;
-    mapping (uint256 => address) addressUtilisateur;
-    event Epingler(uint id);
+    string[] public listIdDoc;
+    mapping (string => address) addressUtilisateur;
+    event Epingler(string id);
     
-    function payerStockage(uint idDoc) public payable {
+    function payerStockage(string memory idDoc) public payable {
         require(msg.value  >= 100 finney,"Minimum de 0.1 ether requis");
         listIdDoc.push(idDoc);
         addressUtilisateur[idDoc] = msg.sender;
         emit Epingler(idDoc);
     }
-
+    
 }
