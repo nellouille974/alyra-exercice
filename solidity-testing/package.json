@@ -1,0 +1,17 @@
+{
+  "name": "solidity-testing",
+  "version": "1.0.0",
+  "description": "test unitaire with waffle",
+  "main": "index.js",
+  "scripts": {
+    "test": "waffle && npx mocha"
+  },
+  "author": "nelly",
+  "license": "ISC",
+  "dependencies": {
+    "ethereum-waffle": "^2.0.7"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0"
+  }
+}
